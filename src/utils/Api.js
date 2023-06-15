@@ -108,21 +108,21 @@ class Api {
     }
 
     deleteCard(cardId) {
-        return this._request(`/ cards / ${cardId}`, {
+        return this._request(`/cards/${cardId}`, {
             method: 'DELETE',
             headers: this.headers,
         })
     }
 
     _addLike(cardId) {
-        return this._request(`/ cards / ${cardId} / likes`, {
+        return this._request(`/cards/${cardId}/likes`, {
             method: 'PUT',
             headers: this.headers,
         })
     }
 
     _removeLike(cardId) {
-        return this._request(`/ cards / ${cardId} / likes`, {
+        return this._request(`/cards/${cardId}/likes`, {
             method: 'DELETE',
             headers: this.headers,
         })

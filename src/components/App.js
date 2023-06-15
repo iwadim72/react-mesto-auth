@@ -33,16 +33,6 @@ function App() {
     const [email, setEmail] = React.useState('');
     const navigate = useNavigate();
 
-    React.useEffect(() => {
-        api.getProfileInfo()
-            .then((res) => {
-                setCurrentUser(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }, [])
-
 
     function handleEditAvatarClick() {
         setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
@@ -160,14 +150,27 @@ function App() {
     }
 
     React.useEffect(() => {
+        if (loggedIn) {
+            api.getProfileInfo()
+                .then((res) => {
+                    setCurrentUser(res);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+
+            api.getInitialCards()
+                .then((res) => {
+                    setCards(res);
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
+    }, [loggedIn])
+
+    React.useEffect(() => {
         handleTokenCheck();
-        api.getInitialCards()
-            .then((res) => {
-                setCards(res);
-            })
-            .catch((error) => {
-                console.log(error)
-            })
     }, [])
 
     return (

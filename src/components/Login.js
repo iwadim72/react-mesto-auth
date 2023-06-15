@@ -34,7 +34,7 @@ export default function Login({ handleLogin, changeEmail }) {
                     <input className="auth__input auth__input_content_email" placeholder="Email" name="email" value={values.email || ''} onChange={handleChange}></input>
                 </label>
                 <label className="auth__field">
-                    <input className="auth__input auth__input_content_password" placeholder="Пароль" name="password" value={values.password || ''} onChange={handleChange}></input>
+                    <input className="auth__input auth__input_content_password" type="password" placeholder="Пароль" name="password" value={values.password || ''} onChange={handleChange}></input>
                 </label>
             </div>
             <button type="submit" className="auth__submit">Войти</button>
